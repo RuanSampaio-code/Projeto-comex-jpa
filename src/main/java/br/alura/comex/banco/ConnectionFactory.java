@@ -1,0 +1,27 @@
+package br.alura.comex.banco;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+public class ConnectionFactory {
+
+    // Método para criar uma conexão com o banco de dados
+    public Connection criaConexao() {
+        String usuario = "root"; // Nome de usuário do banco de dados
+        String senha = "Mateus@2022";       // Senha do banco de dados
+
+        try {
+            // Tenta estabelecer uma conexão com o banco de dados MySQL
+            // usando o DriverManager e retornando a conexão.
+
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/comex", usuario, senha);
+
+        } catch (SQLException e) {
+            // Se ocorrer uma exceção SQL, lança uma RuntimeException com uma mensagem de erro.
+            throw new RuntimeException("Erro ao tentar se conectar no banco de dados.", e);
+        }
+
+
+    }
+}
