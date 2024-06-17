@@ -1,5 +1,6 @@
 package br.alura.comex.dao.jpa;
 
+import br.alura.comex.interfaces.CatInterfaceDao;
 import br.alura.comex.models.Categoria;
 
 import javax.persistence.EntityManager;

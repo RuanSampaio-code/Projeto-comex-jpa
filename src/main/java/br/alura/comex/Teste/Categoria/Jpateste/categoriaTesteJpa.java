@@ -52,9 +52,6 @@ public class categoriaTesteJpa {
             opc = exibirMenu();
         }
 
-
-
-
         entityManager.close();
         comex.close();
     }

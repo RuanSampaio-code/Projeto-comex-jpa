@@ -1,12 +1,13 @@
 package br.alura.comex.dao.jpa;
 
+import br.alura.comex.interfaces.ProdInterfaceDao;
 import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Produto;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class JpaProdutoDao implements ProdInterfaceDao{
+public class JpaProdutoDao implements ProdInterfaceDao {
     private EntityManager manager;
 
     public JpaProdutoDao(EntityManager manager) {
@@ -34,7 +35,7 @@ public class JpaProdutoDao implements ProdInterfaceDao{
 
 
         // Define a consulta JPQL para selecionar todas as categorias
-        String jpql = "SELECT p FROM produto p";
+        String jpql = "SELECT p FROM Produto p";
 
         // Cria uma consulta do tipo TypedQuery usando a string JPQL e a classe Categoria
         List<Produto> produtos = manager.createQuery(jpql, Produto.class).getResultList();

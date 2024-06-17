@@ -1,4 +1,4 @@
-package br.alura.comex.dao.jpa;
+package br.alura.comex.interfaces;
 
 import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Produto;

@@ -14,12 +14,20 @@ public class Produto {
 
     private double preco;
 
+
+    public Produto() {
+
+    }
+
+    public Produto(Long id, String nome, String descrisao, Double preco) {
+    }
+
     public Long getId() {
         return id;
     }
 
-    public Produto(Long id, String nome, String descricao, double preco) {
-        this.id = id;
+    public Produto(String nome, String descricao, double preco) {
+
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;

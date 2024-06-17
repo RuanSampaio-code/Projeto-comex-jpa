@@ -1,18 +1,24 @@
 package br.alura.comex.Service;
 
 import br.alura.comex.dao.jpa.JpaProdutoDao;
-import br.alura.comex.dao.jpa.ProdInterfaceDao;
+import br.alura.comex.interfaces.ProdInterfaceDao;
 import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Produto;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProdutoServiceJPA implements ProdInterfaceDao {
 
     private JpaProdutoDao jpaProdutoDao;
+
+    public ProdutoServiceJPA(EntityManager entityManager) {
+        this.jpaProdutoDao = new JpaProdutoDao(entityManager);
+    }
+
     @Override
     public void cadastra(Produto produto) {
-        this.jpaProdutoDao = jpaProdutoDao;
+        jpaProdutoDao.cadastra(produto);
     }
 
     @Override

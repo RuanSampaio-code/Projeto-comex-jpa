@@ -1,6 +1,6 @@
 package br.alura.comex.Service;
 
-import br.alura.comex.dao.jpa.CatInterfaceDao;
+import br.alura.comex.interfaces.CatInterfaceDao;
 import br.alura.comex.dao.jpa.JpaCategoriaDao;
 import br.alura.comex.models.Categoria;
 
