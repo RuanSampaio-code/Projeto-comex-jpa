@@ -1,9 +1,7 @@
 package br.alura.comex.Service;
 
-import br.alura.comex.Dao.CategoriaDao;
-import br.alura.comex.Dao.ProdutoDao;
+import br.alura.comex.dao.ProdutoDao;
 import br.alura.comex.exception.EntidadeNaoEncontradaException;
-import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Produto;
 
 import java.util.ArrayList;

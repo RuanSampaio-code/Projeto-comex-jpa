@@ -1,4 +1,4 @@
-package br.alura.comex.Dao;
+package br.alura.comex.dao;
 
 import br.alura.comex.models.Cliente;
 import br.alura.comex.banco.ConnectionFactory;

@@ -13,23 +13,20 @@ public class Categoria {
     private Long id;
     private String nome;
 
+    private String descricao;
+
+
+
+
+
     public Categoria() {
 
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public Categoria( String nome, String descrisao) {
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    private String descricao;
-
-    public Categoria(Long id, String nome) {
-        this.id = id;
         this.nome = nome;
+        this.descricao = descrisao;
     }
 
     public Long getId() {
@@ -48,11 +45,20 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     @Override
     public String toString() {
         return "Categoria{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", descrisao" + descricao + '\'' +
                 '}';
     }
 
