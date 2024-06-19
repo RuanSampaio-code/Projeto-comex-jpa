@@ -11,6 +11,11 @@ import java.util.List;
 public class JpaClienteDao implements ClienteInterfaceDao {
 
     private EntityManager manager;
+
+    public JpaClienteDao(EntityManager manager) {
+        this.manager = manager;
+    }
+
     @Override
     public void cadastra(Cliente cliente) {
         // Inicia uma transação no EntityManager
@@ -105,6 +110,23 @@ public class JpaClienteDao implements ClienteInterfaceDao {
 
     @Override
     public void remover(Long id) {
+
+        try {
+            manager.getTransaction().begin();
+
+            Cliente clienteDelete = buscarID(id);
+
+            if (clienteDelete == null) {
+                System.out.println("Categoria não encontrada com o ID informado.");
+            } else {
+                manager.remove(clienteDelete);
+                manager.getTransaction().commit();
+                System.out.println("Exclusão realizada com sucesso.");
+            }
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro ao tentar excluir o cliente: " + e.getMessage());
+            manager.getTransaction().rollback(); // Rollback da transação em caso de erro
+        }
 
     }
 }

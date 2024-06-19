@@ -19,8 +19,7 @@ public class Cliente {
     private String estado;
     private String cep;
 
-    public Cliente(Long id, String cpf, String nome, String email, String telefone, String logradouro, String bairro, String cidade, String estado, String cep) {
-        this.id = id;
+    public Cliente( String cpf, String nome, String email, String telefone, String logradouro, String bairro, String cidade, String estado, String cep) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;

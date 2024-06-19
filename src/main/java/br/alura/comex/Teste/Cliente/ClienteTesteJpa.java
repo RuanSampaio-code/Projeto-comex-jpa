@@ -1,6 +1,9 @@
 package br.alura.comex.Teste.Cliente;
 
+import br.alura.comex.Service.ClienteServiceJPA;
 import br.alura.comex.Service.ProdutoServiceJPA;
+import br.alura.comex.dao.jpa.JpaClienteDao;
+import br.alura.comex.models.Cliente;
 import br.alura.comex.models.Produto;
 
 import javax.persistence.EntityManager;
@@ -11,7 +14,7 @@ import java.util.Scanner;
 
 public class ClienteTesteJpa {
     private static Scanner teclado = new Scanner(System.in);
-    private static ProdutoServiceJPA produtoServiceJPA;
+    private static ClienteServiceJPA clienteServiceJPA;
     public static void main(String[] args) {
 
         //cria uma instância de EntityManagerFactory. , utilizando o nome da unidade de persistência fornecida
@@ -23,7 +26,7 @@ public class ClienteTesteJpa {
 
         // Cria uma instância de JpaCategoriaDao passando o EntityManager como argumento
         //JpaCategoriaDao dao = new JpaCategoriaDao(entityManager);
-        produtoServiceJPA = new ProdutoServiceJPA(entityManager);
+        clienteServiceJPA = new ClienteServiceJPA(entityManager);
         System.out.println("BEM VINDOS AO PROJETO COMEX - CADASTRO DE CLIENTES");
 
         var opc = exibirMenu();
@@ -71,7 +74,7 @@ public class ClienteTesteJpa {
 
     }
     private static void listarTodosClientes() {
-        List<Produto> listaDeProdutos = produtoServiceJPA.listarTodos();
+        List<Cliente> listaDeProdutos = clienteServiceJPA.listarTodos();
 
         listaDeProdutos.stream()
                 .forEach(System.out::println);
@@ -85,28 +88,42 @@ public class ClienteTesteJpa {
         System.out.print("Digite o ID do produto que você deseja deletar: ");
         Long id = teclado.nextLong();
 
-        produtoServiceJPA.remover(id);
-
+        clienteServiceJPA.remover(id);
 
     }
 
     private static void criarCliente(){
-        System.out.println("CRIANDO NOVO PRODUTO");
-        // Solicita e armazena os dados do usuário
-        teclado.nextLine();
-        //System.out.println("Digite o Nome: ");
-        System.out.println("Digite o Nome: ");
+        System.out.println("CRIANDO NOVO CLINETE");
+        System.out.println("Digite o CPF: ");
+        String cpf = teclado.nextLine();
+
+        System.out.println("Digite o nome: ");
         String nome = teclado.nextLine();
 
-        System.out.println("Digite A descrisã1o: ");
-        String descrisao = teclado.nextLine();
+        System.out.println("Digite o email: ");
+        String email = teclado.nextLine();
 
-        System.out.println("Digite o valor: ");
-        Double valor = teclado.nextDouble();
+        System.out.println("Digite o telefone: ");
+        String telefone = teclado.nextLine();
 
-        Produto novoProduto = new Produto(nome, descrisao,valor);
+        System.out.println("Digite o logradouro: ");
+        String logradouro = teclado.nextLine();
 
-        produtoServiceJPA.cadastra(novoProduto);
+        System.out.println("Digite o bairro: ");
+        String bairro = teclado.nextLine();
+
+        System.out.println("Digite a cidade: ");
+        String cidade = teclado.nextLine();
+
+        System.out.println("Digite o estado: ");
+        String estado = teclado.nextLine();
+
+        System.out.println("Digite o CEP: ");
+        String cep = teclado.nextLine();
+
+        // Criando o novo cliente com todos os campos
+        Cliente novoCliente = new Cliente(cpf, nome, email, telefone, logradouro, bairro, cidade, estado, cep);
+        clienteServiceJPA.cadastra(novoCliente);
     }
 
     private static void atualizarCliente(){
@@ -115,9 +132,9 @@ public class ClienteTesteJpa {
         teclado.nextLine(); // Consumir a quebra de linha deixada pelo nextLong()
 
         // Buscar a categoria pelo ID
-        Produto produto = produtoServiceJPA.buscarID(id);
+        Cliente cliente = clienteServiceJPA.buscarID(id);
 
-        if (produto == null) {
+        if (cliente == null) {
             System.out.println("produto não encontrada com o ID informado.");
         } else {
             // Realizar a alteração
@@ -131,12 +148,12 @@ public class ClienteTesteJpa {
             Double valor = teclado.nextDouble();
 
             // Atualizar os dados da categoria
-            produto.setNome(nome);
-            produto.setDescricao(descricao);
-            produto.setPreco(valor);
+            cliente.setNome(nome);
+            cliente.setDescricao(descricao);
+            cliente.setPreco(valor);
 
             // Chamar o método de serviço para atualizar no banco de dados
-            produtoServiceJPA.alterar(id, produto);
+            clienteServiceJPA.alterar(id, cliente);
 
             System.out.println("Categoria atualizada com sucesso.");
         }
@@ -147,7 +164,7 @@ public class ClienteTesteJpa {
         System.out.print("Digite o ID do produto que você deseja buscar: ");
         Long id = teclado.nextLong();
 
-        Produto produtobuscado = produtoServiceJPA.buscarID(id);
+        Cliente produtobuscado = clienteServiceJPA .buscarID(id);
 
         System.out.println(produtobuscado);
     }
