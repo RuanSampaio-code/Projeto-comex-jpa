@@ -4,11 +4,14 @@ package br.alura.comex.Teste.Categoria.Jpateste;
 import br.alura.comex.Service.CategoriaServiceJPA;
 import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Cliente;
+import br.alura.comex.util.JPAUtil;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class categoriaTesteJpa {
     private static Scanner teclado = new Scanner(System.in);
@@ -17,16 +20,18 @@ public class categoriaTesteJpa {
     public static void main(String[] args) {
 
         //cria uma instância de EntityManagerFactory. , utilizando o nome da unidade de persistência fornecida
-        EntityManagerFactory comex = Persistence.createEntityManagerFactory("comex");
+        //EntityManagerFactory comex = Persistence.createEntityManagerFactory("comex");
 
         // Usa a EntityManagerFactory para criar um EntityManager
         // O EntityManager é usado para realizar operações de persistência no banco de dados
-        EntityManager entityManager = comex.createEntityManager();
+        //EntityManager entityManager = comex.createEntityManager();
+
+        EntityManager em = JPAUtil.getEntityManager();
 
 
         // Cria uma instância de JpaCategoriaDao passando o EntityManager como argumento
         //JpaCategoriaDao dao = new JpaCategoriaDao(entityManager);
-        categoriaServiceJPA = new CategoriaServiceJPA(entityManager);
+        categoriaServiceJPA = new CategoriaServiceJPA(em);
         System.out.println("BEM VINDOS AO PROJETO COMEX - CADASTRO DE CATEGORIAS");
         var opc = exibirMenu();
 
@@ -52,8 +57,8 @@ public class categoriaTesteJpa {
             opc = exibirMenu();
         }
 
-        entityManager.close();
-        comex.close();
+        em.close();
+        //comex.close();
     }
     private static int exibirMenu(){
 

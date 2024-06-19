@@ -1,6 +1,23 @@
 package br.alura.comex.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "clientes")
 public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String cpf;
+    private String nome;
+    private String email;
+    private String telefone;
+    private String logradouro;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private String cep;
 
     public Cliente(Long id, String cpf, String nome, String email, String telefone, String logradouro, String bairro, String cidade, String estado, String cep) {
         this.id = id;
@@ -15,17 +32,7 @@ public class Cliente {
         this.cep = cep;
     }
 
-    private Long id;
 
-    private String cpf;
-    private String nome;
-    private String email;
-    private String telefone;
-    private String logradouro;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String cep;
 
     public Cliente() {
 

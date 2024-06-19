@@ -1,8 +1,6 @@
 package br.alura.comex.Teste.Cliente;
 
-import br.alura.comex.Service.CategoriaServiceJPA;
 import br.alura.comex.Service.ProdutoServiceJPA;
-import br.alura.comex.models.Categoria;
 import br.alura.comex.models.Produto;
 
 import javax.persistence.EntityManager;
@@ -11,8 +9,7 @@ import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProdutoTesteJpa {
-
+public class ClienteTesteJpa {
     private static Scanner teclado = new Scanner(System.in);
     private static ProdutoServiceJPA produtoServiceJPA;
     public static void main(String[] args) {
@@ -27,26 +24,26 @@ public class ProdutoTesteJpa {
         // Cria uma instância de JpaCategoriaDao passando o EntityManager como argumento
         //JpaCategoriaDao dao = new JpaCategoriaDao(entityManager);
         produtoServiceJPA = new ProdutoServiceJPA(entityManager);
-        System.out.println("BEM VINDOS AO PROJETO COMEX - CADASTRO DE Produtos");
+        System.out.println("BEM VINDOS AO PROJETO COMEX - CADASTRO DE CLIENTES");
 
         var opc = exibirMenu();
 
         while ( opc != 6){
             switch (opc) {
                 case 1:
-                    listarTodosProdutos();
+                    listarTodosClientes();
                     break;
                 case 2:
-                    criarProduto();
+                    criarCliente();
                     break;
                 case 3:
-                    deletarProduto();
+                    deletarCliente();
                     break;
                 case 4:
-                    atualizarCategoria();
+                    atualizarCliente();
                     break;
                 case 5:
-                    buscarProduto();
+                    buscarCliente();
                     break;
             }
 
@@ -73,7 +70,7 @@ public class ProdutoTesteJpa {
         return teclado.nextInt();
 
     }
-    private static void listarTodosProdutos() {
+    private static void listarTodosClientes() {
         List<Produto> listaDeProdutos = produtoServiceJPA.listarTodos();
 
         listaDeProdutos.stream()
@@ -84,7 +81,7 @@ public class ProdutoTesteJpa {
 
     }
 
-    private static void deletarProduto(){
+    private static void deletarCliente(){
         System.out.print("Digite o ID do produto que você deseja deletar: ");
         Long id = teclado.nextLong();
 
@@ -93,7 +90,7 @@ public class ProdutoTesteJpa {
 
     }
 
-    private static void criarProduto(){
+    private static void criarCliente(){
         System.out.println("CRIANDO NOVO PRODUTO");
         // Solicita e armazena os dados do usuário
         teclado.nextLine();
@@ -112,7 +109,7 @@ public class ProdutoTesteJpa {
         produtoServiceJPA.cadastra(novoProduto);
     }
 
-    private static void atualizarCategoria(){
+    private static void atualizarCliente(){
         System.out.print("Digite o ID do produto que você deseja alterar: ");
         Long id = teclado.nextLong();
         teclado.nextLine(); // Consumir a quebra de linha deixada pelo nextLong()
@@ -145,7 +142,7 @@ public class ProdutoTesteJpa {
         }
     }
 
-    private static void buscarProduto(){
+    private static void buscarCliente(){
 
         System.out.print("Digite o ID do produto que você deseja buscar: ");
         Long id = teclado.nextLong();
@@ -156,3 +153,5 @@ public class ProdutoTesteJpa {
     }
 
 }
+
+
