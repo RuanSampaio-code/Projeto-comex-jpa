@@ -40,7 +40,7 @@ public class ProdutoTesteJpa {
                     criarProduto();
                     break;
                 case 3:
-                    //deletarCategoria();
+                    deletarProduto();
                     break;
                 case 4:
                     //atualizarCategoria();
@@ -101,5 +101,38 @@ public class ProdutoTesteJpa {
         Produto novoProduto = new Produto(nome, descrisao,valor);
 
         produtoServiceJPA.cadastra(novoProduto);
+    }
+
+    private static void deletarProduto(){
+        System.out.print("Digite o ID do produto que você deseja alterar: ");
+        Long id = teclado.nextLong();
+        teclado.nextLine(); // Consumir a quebra de linha deixada pelo nextLong()
+
+        // Buscar a categoria pelo ID
+        Produto produto = produtoServiceJPA.buscarID(id);
+
+        if (produto == null) {
+            System.out.println("produto não encontrada com o ID informado.");
+        } else {
+            // Realizar a alteração
+            System.out.print("Digite o novo nome da categoria: ");
+            String nome = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+
+            System.out.print("Digite a nova descrição da categoria: ");
+            String descricao = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+
+            System.out.print("Digite a nova descrição da categoria: ");
+            Double valor = teclado.nextDouble();
+
+            // Atualizar os dados da categoria
+            produto.setNome(nome);
+            produto.setDescricao(descricao);
+            produto.setPreco(valor);
+
+            // Chamar o método de serviço para atualizar no banco de dados
+            produtoServiceJPA.alterar(id, produto);
+
+            System.out.println("Categoria atualizada com sucesso.");
+        }
     }
 }

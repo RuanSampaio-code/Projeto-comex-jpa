@@ -37,8 +37,8 @@ public class ProdutoServiceJPA implements ProdInterfaceDao {
     }
 
     @Override
-    public void alterar(Long id, Categoria produtiAlterar) {
-        jpaProdutoDao.alterar(id,produtiAlterar);
+    public void alterar(Long id, Produto produto) {
+        jpaProdutoDao.alterar(id, produto);
     }
 
     @Override

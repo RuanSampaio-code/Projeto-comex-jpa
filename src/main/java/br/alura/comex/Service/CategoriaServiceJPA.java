@@ -15,11 +15,9 @@ public class CategoriaServiceJPA implements CatInterfaceDao {
         this.jpaCategoriaDao = jpaCategoriaDao;
     }
 
-
     public CategoriaServiceJPA(EntityManager entityManager) {
         this.jpaCategoriaDao = new JpaCategoriaDao(entityManager);
     }
-
 
 
     @Override
@@ -47,7 +45,6 @@ public class CategoriaServiceJPA implements CatInterfaceDao {
     @Override
     public void alterar(Long id, Categoria categoriaAlterar) {
 
-
         jpaCategoriaDao.alterar(id,categoriaAlterar);
 
     }
@@ -55,6 +52,5 @@ public class CategoriaServiceJPA implements CatInterfaceDao {
     @Override
     public void remover(Long id) {
         jpaCategoriaDao.remover(id);
-
     }
 }

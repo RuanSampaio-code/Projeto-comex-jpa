@@ -12,7 +12,7 @@ public interface ProdInterfaceDao {
 
     Produto buscarID(Long id);
 
-    void alterar(Long id, Categoria categoriaAlterar);
+    void alterar(Long id, Produto produto);
 
     void remover(Long id);
 }

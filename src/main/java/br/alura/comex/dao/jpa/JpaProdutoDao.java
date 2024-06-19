@@ -40,7 +40,6 @@ public class JpaProdutoDao implements ProdInterfaceDao {
         // Cria uma consulta do tipo TypedQuery usando a string JPQL e a classe Categoria
         List<Produto> produtos = manager.createQuery(jpql, Produto.class).getResultList();
 
-
         // Retorna a lista de todas as categorias
         return produtos;
 
@@ -60,7 +59,7 @@ public class JpaProdutoDao implements ProdInterfaceDao {
     }
 
     @Override
-    public void alterar(Long id, Categoria produtoAlterar) {
+    public void alterar(Long id, Produto produtoAlterar) {
         try {
             manager.getTransaction().begin();
 
