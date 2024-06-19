@@ -43,10 +43,10 @@ public class ProdutoTesteJpa {
                     deletarProduto();
                     break;
                 case 4:
-                    //atualizarCategoria();
+                    atualizarCategoria();
                     break;
                 case 5:
-                    //buscarCategoria();
+                    buscarProduto();
                     break;
             }
 
@@ -61,8 +61,8 @@ public class ProdutoTesteJpa {
 
         System.out.println("""
                 Escolha uma opcao :
-                1 - Listar todos as Categorias
-                2 - Criar uma Categorias
+                1 - Listar todos as produtos
+                2 - Criar um produto
                 3 - Deletar uma Categoria
                 4 - Atualizar uma Categoria
                 5 - Listar uma Categoria
@@ -81,6 +81,15 @@ public class ProdutoTesteJpa {
 
         System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
         teclado.next();
+
+    }
+
+    private static void deletarProduto(){
+        System.out.print("Digite o ID do produto que você deseja deletar: ");
+        Long id = teclado.nextLong();
+
+        produtoServiceJPA.remover(id);
+
 
     }
 
@@ -103,7 +112,7 @@ public class ProdutoTesteJpa {
         produtoServiceJPA.cadastra(novoProduto);
     }
 
-    private static void deletarProduto(){
+    private static void atualizarCategoria(){
         System.out.print("Digite o ID do produto que você deseja alterar: ");
         Long id = teclado.nextLong();
         teclado.nextLine(); // Consumir a quebra de linha deixada pelo nextLong()
@@ -135,4 +144,15 @@ public class ProdutoTesteJpa {
             System.out.println("Categoria atualizada com sucesso.");
         }
     }
+
+    private static void buscarProduto(){
+
+        System.out.print("Digite o ID do produto que você deseja buscar: ");
+        Long id = teclado.nextLong();
+
+        Produto produtobuscado = produtoServiceJPA.buscarID(id);
+
+        System.out.println(produtobuscado);
+    }
+
 }
