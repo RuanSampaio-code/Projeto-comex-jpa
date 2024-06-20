@@ -21,7 +21,11 @@ public class ClienteServiceJPA implements ClienteInterfaceDao {
 
     @Override
     public List<Cliente> listarTodos() {
-        return null;
+
+       List<Cliente> todosCliente = jpaClienteDao.listarTodos();
+
+
+        return todosCliente;
     }
 
     @Override

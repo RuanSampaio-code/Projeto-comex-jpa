@@ -74,9 +74,9 @@ public class ClienteTesteJpa {
 
     }
     private static void listarTodosClientes() {
-        List<Cliente> listaDeProdutos = clienteServiceJPA.listarTodos();
+        List<Cliente> listaDeClientes = clienteServiceJPA.listarTodos();
 
-        listaDeProdutos.stream()
+        listaDeClientes.stream()
                 .forEach(System.out::println);
 
         System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
@@ -127,7 +127,7 @@ public class ClienteTesteJpa {
     }
 
     private static void atualizarCliente(){
-        System.out.print("Digite o ID do produto que você deseja alterar: ");
+        System.out.print("Digite o ID do cliente que você deseja alterar: ");
         Long id = teclado.nextLong();
         teclado.nextLine(); // Consumir a quebra de linha deixada pelo nextLong()
 
@@ -138,19 +138,55 @@ public class ClienteTesteJpa {
             System.out.println("produto não encontrada com o ID informado.");
         } else {
             // Realizar a alteração
-            System.out.print("Digite o novo nome da categoria: ");
-            String nome = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+//            System.out.print("Digite o novo nome da categoria: ");
+//            String nome = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+//
+//            System.out.print("Digite a nova descrição da categoria: ");
+//            String descricao = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+//
+//            System.out.print("Digite a nova descrição da categoria: ");
+//            Double valor = teclado.nextDouble();
 
-            System.out.print("Digite a nova descrição da categoria: ");
-            String descricao = teclado.nextLine().trim(); // Use trim() para remover espaços em branco extras
+            System.out.println("Digite o CPF: ");
+            String cpf = teclado.nextLine();
 
-            System.out.print("Digite a nova descrição da categoria: ");
-            Double valor = teclado.nextDouble();
+            System.out.println("Digite o nome: ");
+            String nome = teclado.nextLine();
+
+            System.out.println("Digite o email: ");
+            String email = teclado.nextLine();
+
+            System.out.println("Digite o telefone: ");
+            String telefone = teclado.nextLine();
+
+            System.out.println("Digite o logradouro: ");
+            String logradouro = teclado.nextLine();
+
+            System.out.println("Digite o bairro: ");
+            String bairro = teclado.nextLine();
+
+            System.out.println("Digite a cidade: ");
+            String cidade = teclado.nextLine();
+
+            System.out.println("Digite o estado: ");
+            String estado = teclado.nextLine();
+
+            System.out.println("Digite o CEP: ");
+            String cep = teclado.nextLine();
 
             // Atualizar os dados da categoria
+            // Atualizar os dados do cliente
+            cliente.setCpf(cpf);
             cliente.setNome(nome);
-            cliente.setDescricao(descricao);
-            cliente.setPreco(valor);
+            cliente.setEmail(email);
+            cliente.setTelefone(telefone);
+            cliente.setLogradouro(logradouro);
+            cliente.setBairro(bairro);
+            cliente.setCidade(cidade);
+            cliente.setEstado(estado);
+            cliente.setCep(cep);
+            cliente.setNome(nome);
+
 
             // Chamar o método de serviço para atualizar no banco de dados
             clienteServiceJPA.alterar(id, cliente);

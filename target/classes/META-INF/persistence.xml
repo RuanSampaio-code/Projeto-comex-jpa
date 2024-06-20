@@ -16,7 +16,7 @@
             <!-- Usuário do banco de dados -->
             <property name="javax.persistence.jdbc.user" value="root"/>
             <!-- Senha do banco de dados -->
-            <property name="javax.persistence.jdbc.password" value="Mateus@2022"/>
+            <property name="javax.persistence.jdbc.password" value="1w3q2e"/>
 
             <!-- Dialeto do Hibernate para o MySQL 8 -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
